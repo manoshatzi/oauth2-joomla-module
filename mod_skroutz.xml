@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+    <!-- Name of the Module -->
+	<name>Skroutz Login</name> 
+ 
+    <!-- Name of the Author -->
+	<author>manoshatzi - nohsys.net</author> 
+ 
+    <!-- Version Date of the Module -->
+	<creationDate>2011-10-15</creationDate> 
+ 
+    <!-- Copyright information -->
+	<copyright>All rights reserved by nohsys.net 2011.</copyright> 
+ 
+    <!-- License Information -->
+	<license>GPL 2.0</license> 
+ 
+    <!-- Author's email address -->
+	<authorEmail>info@nohsys.net</authorEmail> 
+ 
+    <!-- Author's website -->
+	<authorUrl>www.nohsys.net</authorUrl> 
+ 
+    <!-- Module version number -->
+	<version>1.0.0</version> 
+ 
+    <!-- Description of what the module does -->
+	<description>Login in joomla with Skroutz account</description>
+  
+    <!-- Listing of all files that should be installed for the module to function -->
+	<files>
+        <!-- The "module" attribute signifies that this is the main controller file -->
+		<filename module="mod_skroutz">mod_skroutz.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<filename>callback.php</filename>
+		<filename>configure.php</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/index.html</filename>
+	</files>
+</install>
