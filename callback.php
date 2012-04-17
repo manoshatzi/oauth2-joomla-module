@@ -8,10 +8,8 @@ if (isset($_GET['code']))
 
 class modCallback
 {
-        
 	function test()
 	{
-
 		$client_id = CLIENT_ID;
 		$client_secret = CLIENT_SECRET;
 		$redirect_uri = REDIRECT_URI;
@@ -42,7 +40,7 @@ class modCallback
 
 		//execute post
 		$result = curl_exec($ch);
-	
+
 		//close connection
 		curl_close($ch);
 		$theResult=json_decode($result);
@@ -56,7 +54,7 @@ class modCallback
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_TIMEOUT, '3');
 		$content = trim(curl_exec($ch));
-		curl_close($ch);	
+		curl_close($ch);
 
 		$skroutz_user = json_decode($content);
 		$name = $skroutz_user->name;
@@ -75,33 +73,31 @@ class modCallback
 		$profession = $skroutz_user->profession;
 		$first_name = $skroutz_user->first_name;
 		$email = $skroutz_user->email;
-		
-		
 		?>
 		<form action="http://nohsys-projects.net/joomla_skroutz/index.php" method="post" id="form-login-skroutz">
 			<input type="hidden" name="skroutz" value="skroutz" />
-			<input type="hidden" name="name" value="<?=$name?>" />
-			<input type="hidden" name="company" value="<?=$company?>" />
-			<input type="hidden" name="city" value="<?=$city?>" />
-			<input type="hidden" name="address" value="<?=$address?>" />
-			<input type="hidden" name="region" value="<?=$region?>" />
-			<input type="hidden" name="zip" value="<?=$zip?>" />
-			<input type="hidden" name="invoice" value="<?=$invoice?>" />
-			<input type="hidden" name="doy" value="<?=$doy?>" />
-			<input type="hidden" name="company_phone" value="<?=$company_phone?>" />
-			<input type="hidden" name="mobile" value="<?=$mobile?>" />
-			<input type="hidden" name="phone" value="<?=$phone?>" />
-			<input type="hidden" name="last_name" value="<?=$last_name?>" />
-			<input type="hidden" name="afm" value="<?=$afm?>" />
-			<input type="hidden" name="profession" value="<?=$profession?>" />
-			<input type="hidden" name="first_name" value="<?=$first_name?>" />
-			<input type="hidden" name="email" value="<?=$email?>" />
+			<input type="hidden" name="name" value="<?= $name ?>" />
+			<input type="hidden" name="company" value="<?= $company ?>" />
+			<input type="hidden" name="city" value="<?= $city ?>" />
+			<input type="hidden" name="address" value="<?= $address ?>" />
+			<input type="hidden" name="region" value="<?= $region ?>" />
+			<input type="hidden" name="zip" value="<?= $zip ?>" />
+			<input type="hidden" name="invoice" value="<?= $invoice ?>" />
+			<input type="hidden" name="doy" value="<?= $doy ?>" />
+			<input type="hidden" name="company_phone" value="<?= $company_phone ?>" />
+			<input type="hidden" name="mobile" value="<?= $mobile ?>" />
+			<input type="hidden" name="phone" value="<?= $phone ?>" />
+			<input type="hidden" name="last_name" value="<?= $last_name ?>" />
+			<input type="hidden" name="afm" value="<?= $afm ?>" />
+			<input type="hidden" name="profession" value="<?= $profession ?>" />
+			<input type="hidden" name="first_name" value="<?= $first_name ?>" />
+			<input type="hidden" name="email" value="<?= $email ?>" />
 		</form>
 		<script type="text/javascript">
-        	document.forms["form-login-skroutz"].submit();
-        </script>
+			document.forms["form-login-skroutz"].submit();
+		</script>
 	<?php }
-	
+
 	function login()
 	{
 		header("Location: https://www.skroutz.gr/oauth2/authorizations/new?client_id=".urlencode(CLIENT_ID)."&redirect_uri=".urlencode(REDIRECT_URI)."&response_type=code");
