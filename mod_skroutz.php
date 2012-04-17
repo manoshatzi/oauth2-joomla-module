@@ -1,6 +1,6 @@
 <?php
 //don't allow other scripts to grab and execute our file
-defined('_JEXEC') or die('Direct Access to this location is not allowed.');
+defined('_JEXEC') or die('Restricted access');
 
 // Include the syndicate functions only once
 require_once (dirname(__FILE__).DS.'helper.php');
