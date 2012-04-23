@@ -10,10 +10,19 @@ $return	= modSkroutzHelper::getReturnURL($params, $type);
 
 $user =& JFactory::getUser();
 
-if($_POST['login']=='skroutz')
-{
-	require_once (dirname(__FILE__).DS.'callback.php');
-	modCallback::login();
+if (modSkroutzHelper::isLogin()) {
+	$layout = 'login';
+} elseif (modSkroutzHelper::isCallback()) {
+	//modSkroutzHelper::authenticate();
+	// do something more
+
+	$layout = 'callback';
+} else {
+	$layout = 'default';
 }
 
-require(JModuleHelper::getLayoutPath('mod_skroutz'));
+$path = JModuleHelper::getLayoutPath('mod_skroutz', $layout);
+
+if (file_exists($path)) {
+	require($path);
+}

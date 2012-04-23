@@ -37,4 +37,70 @@ class modSkroutzHelper
 		$user = & JFactory::getUser();
 		return (!$user->get('guest')) ? 'logout' : 'login';
 	}
+
+	function isLogin() {
+		if (JRequest::getVar('login') == 'skroutz') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function isCallback() {
+		if (JRequest::getVar('code')) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function getAddress($params) {
+		$client_id = CLIENT_ID;
+		$client_secret = CLIENT_SECRET;
+		$redirect_uri = REDIRECT_URI;
+
+		//set POST variables
+		$url = SITE . TOKEN_URL;
+		$fields = array(
+			'code'=>urlencode($_GET['code']),
+			'client_id'=>urlencode($client_id),
+			'client_secret'=>urlencode($client_secret),
+			'redirect_uri'=>urlencode($redirect_uri),
+			'grant_type'=>urlencode('authorization_code')
+		);
+
+		//url-ify the data for the POST
+		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		rtrim($fields_string,'&');
+
+		//open connection
+		$ch = curl_init();
+
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_URL,$url);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false );
+		curl_setopt($ch,CURLOPT_POST,count($fields));
+		curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+		//execute post
+		$result = curl_exec($ch);
+
+		//close connection
+		curl_close($ch);
+		$theResult=json_decode($result);
+		$oauth_token=$theResult->access_token;
+		$url = SITE . ADDRESS_URL;
+		$qry_str = "?oauth_token=".urlencode($oauth_token);
+		$ch = curl_init();
+
+		// Set query data here with the URL
+		curl_setopt($ch, CURLOPT_URL,$url . $qry_str);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_TIMEOUT, '3');
+		$content = trim(curl_exec($ch));
+		curl_close($ch);
+
+
+	}
 }
