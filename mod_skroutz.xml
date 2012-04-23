@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <install type="module" version="1.5.0">
 	<!-- Name of the Module -->
-	<name>Skroutz Login</name>
+	<name>Skroutz Easy</name>
 
 	<!-- Name of the Author -->
-	<author>manoshatzi - nohsys.net</author>
+	<author>Skroutz.gr</author>
 
 	<!-- Version Date of the Module -->
-	<creationDate>2011-10-15</creationDate>
+	<creationDate>April 2012</creationDate>
 
 	<!-- Copyright information -->
-	<copyright>All rights reserved by nohsys.net 2011.</copyright>
+	<copyright>Copyright (c) 2012 Skroutz.gr. All rights reserved.</copyright>
 
 	<!-- License Information -->
 	<license>GPL 2.0</license>
 
 	<!-- Author's email address -->
-	<authorEmail>info@nohsys.net</authorEmail>
+	<authorEmail>dev@skroutz.gr</authorEmail>
 
 	<!-- Author's website -->
-	<authorUrl>www.nohsys.net</authorUrl>
+	<authorUrl>www.skroutz.gr</authorUrl>
 
 	<!-- Module version number -->
 	<version>1.0.0</version>
 
 	<!-- Description of what the module does -->
-	<description>Login in joomla with Skroutz account</description>
+	<description>Faster checkouts with Skroutz Easy.</description>
 
 	<!-- Listing of all files that should be installed for the module to function -->
 	<files>
@@ -35,7 +35,6 @@
 		<filename>helper.php</filename>
 		<filename>callback.php</filename>
 		<filename>configure.php</filename>
-		<filename>tmpl/default.php</filename>
-		<filename>tmpl/index.html</filename>
+		<folder>tmpl</folder>
 	</files>
 </install>
