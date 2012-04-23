@@ -1,7 +1,6 @@
 <?php // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
 
-
 <?php if($type == 'logout') : ?>
 
 	<form action="index.php" method="post" name="login" id="form-login">
@@ -12,13 +11,13 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		<input type="hidden" name="task" value="logout" />
 		<input type="hidden" name="return" value="<?php echo $return; ?>" />
 	</form>
-	<p>You are Logedin</p>
+	<p>You are Logged in</p>
 
 <?php else : ?>
 
 	<form action="<?php echo JRoute::_( 'index.php', true, $params->get('usesecure')); ?>" method="post" >
 		<input type="hidden" name="login" value="skroutz" />
-		<input type="submit" name="Login With Skroutz" class="button" value="<?php echo JText::_('Login With Skroutz') ?>" />
+		<input type="submit" name="Submit" class="button" value="<?php echo JText::_('Use Skroutz Easy') ?>" />
 	</form>
 
 	<?php if($_POST['skroutz']=='skroutz') : ?>
