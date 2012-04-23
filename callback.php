@@ -15,7 +15,7 @@ class modCallback
 		$redirect_uri = REDIRECT_URI;
 
 		//set POST variables
-		$url = 'https://www.skroutz.gr/oauth2/token';
+		$url = SITE . TOKEN_URL;
 		$fields = array(
 			'code'=>urlencode($_GET['code']),
 			'client_id'=>urlencode($client_id),
@@ -45,7 +45,7 @@ class modCallback
 		curl_close($ch);
 		$theResult=json_decode($result);
 		$oauth_token=$theResult->access_token;
-		$url = 'https://www.skroutz.gr/oauth2/address';
+		$url = SITE . ADDRESS_URL;
 		$qry_str = "?oauth_token=".urlencode($oauth_token);
 		$ch = curl_init();
 
@@ -100,7 +100,7 @@ class modCallback
 
 	function login()
 	{
-		header("Location: https://www.skroutz.gr/oauth2/authorizations/new?client_id=".urlencode(CLIENT_ID)."&redirect_uri=".urlencode(REDIRECT_URI)."&response_type=code");
+		header("Location: " . SITE . AUTHORIZATION_URL . "?client_id=".urlencode(CLIENT_ID)."&redirect_uri=".urlencode(REDIRECT_URI)."&response_type=code");
 	}
 }
 
