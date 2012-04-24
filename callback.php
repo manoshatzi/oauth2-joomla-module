@@ -74,7 +74,7 @@ class modCallback
 		$first_name = $skroutz_user->first_name;
 		$email = $skroutz_user->email;
 		?>
-		<form action="http://nohsys-projects.net/joomla_skroutz/index.php" method="post" id="form-login-skroutz">
+		<form action="/joomla/index.php" method="post" id="form-login-skroutz">
 			<input type="hidden" name="skroutz" value="skroutz" />
 			<input type="hidden" name="name" value="<?= $name ?>" />
 			<input type="hidden" name="company" value="<?= $company ?>" />
