@@ -44,6 +44,10 @@
 		<param name="client_id" type="text" default="" label="Client ID" description="PARAMMODULECLASSSUFFIX" />
 		<param name="client_secret" type="text" default="" label="Client secret" description="PARAMMODULECLASSSUFFIX" />
 		<param name="redirect_uri" type="text" default="" label="Redirect URI" description="PARAMMODULECLASSSUFFIX" />
+		<param name="site" type="text" default="https://www.skroutz.gr" label="Site" description="" />
+		<param name="authorization_url" type="text" default="/oauth2/authorizations/new" label="Authorization URL" description="" />
+		<param name="token_url" type="text" default="/oauth2/token" label="Token URL" description="" />
+		<param name="address_url" type="text" default="/oauth2/address" label="Address URL" description="" />
 		<param name="pretext" type="textarea" cols="30" rows="5" default="" label="Pre-text" description="PARAMPRETEXT" />
 		<param name="posttext" type="textarea" cols="30" rows="5" label="Post-text" description="PARAMPOSTTEXT" />
 		<param name="login" type="menuitem" default="" disable="separator" label="Login Redirection URL" description="PARAMLOGINREDIRECTURL" state="1" />

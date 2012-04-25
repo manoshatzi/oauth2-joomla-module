@@ -11,6 +11,7 @@ $return	= modSkroutzHelper::getReturnURL($params, $type);
 $user =& JFactory::getUser();
 
 if (modSkroutzHelper::isLogin()) {
+	$url = modSkroutzHelper::getAuthorizationURL($params);
 	$layout = 'login';
 } elseif (modSkroutzHelper::isCallback()) {
 	//modSkroutzHelper::authenticate();

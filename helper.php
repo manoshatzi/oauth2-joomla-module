@@ -38,6 +38,18 @@ class modSkroutzHelper
 		return (!$user->get('guest')) ? 'logout' : 'login';
 	}
 
+	function getAuthorizationURL($params) {
+		$site = $params->get('site');
+		$authorization_url = $params->get('authorization_url');
+
+		$url = $site . $authorization_url;
+
+		$client_id = urlencode($params->get('client_id'));
+		$redirect_uri = urlencode($params->get('redirect_uri') . modSkroutzHelper::getCallbackPath());
+
+		return $site . $authorization_url . "?client_id=" . $client_id . "&redirect_uri=" . $redirect_uri . "&response_type=code";
+	}
+
 	function isLogin() {
 		if (JRequest::getVar('login') == 'skroutz') {
 			return true;
@@ -55,9 +67,9 @@ class modSkroutzHelper
 	}
 
 	function getAddress($params) {
-		$client_id = CLIENT_ID;
-		$client_secret = CLIENT_SECRET;
-		$redirect_uri = REDIRECT_URI;
+		$client_id = $params->get('client_id');
+		$client_secret = $params->get('client_secret');
+		$redirect_uri = $params->get('redirect_uri');
 
 		//set POST variables
 		$url = SITE . TOKEN_URL;
@@ -102,5 +114,9 @@ class modSkroutzHelper
 		curl_close($ch);
 
 
+	}
+
+	private function getCallbackPath() {
+		return "/modules/mod_skroutz/callback.php";
 	}
 }
